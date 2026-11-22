@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Doom Tierlist</title>
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAdCAYAAAAkXAW5AAACqklEQVR4nO2UO0xTURjHf/fec+/t49JaLKAQJDZN0IEUo4MTTr5iiLIYDWok0c3BQWc3cHPA1+ACxhgHE52UxOigg4kan0lj8C0FtFik2Pa293FcXSy1mOjQ33q+7/x/yTnfBw0a/Ico9TSNnOqTezc4+IrGjfdhTh6fqOueP5Y4dmJAbuv4xsboDO2tHq/vzDP9wiHZF6eciPOqEuXBuzayuRDjFy/9kZRYqmBwoFfuinxif7+AnIY9PUf6nuTRTRtTKHy/kiGxOc+eo53sGdrJ23QKQ2TkpbO3ahapWnh9Z0SmYg72D4/Z7w6xZJj2VAtoGlPPF1EVhcT2NqykRcUuoPmLaOi4H3Ry7W10bLlTk0jVojNrdVlotliIhugP5igXHaT0iXWFWZ1aSWuvhe+VcApFhKlQDAS5cNdkzccZBg+aaFtna5Ko+hyaLskGItz2O+ldKLC+SaGg+eSnihS/FrGaYmiWRlmYiIDF08kQl+8HONRl47uVWvKXlvA8cHxQhcSzYfKzhxlUCQYMREBSygukG0CzwuirIsSTLUixiFv00JB/R+KLLekRi+ztmER9Z5N2JBY+tq0QclSkbtHcFcGMGnimoJt5xvbpFD4bZGaLNUuo1Q5PZzzl4YzHh2c55vKSJqFQATzfB6EQ745gWiqu7aIJsNUEkedPyVRsOoeyNU/HkiM69mZBGQPAZbwnKGOapOCC70s820U1TEREZ3q2xPCEx7nReQXma82vTeJXDr0sKSMJQ7YYKqYPuA7kK3x6nefMPZ1z1x7XtTnrahruNGRshcrugTALcw7rz+eXtbar/onf8cSI4pUlk88qjD4OLye/fokdqQAhU2HdJp0dR+L/RiKYzuICTQb0W9l/I3EgbSsl4MUPyeGr2rIlGjRo0GApfgKJSf+aTp1A7AAAAABJRU5ErkJggg==">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500;700;800&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#080b12;--bg2:#0d121c;--panel:#111826;--panel2:#172033;--line:#212c40;--text:#eef2f8;--mute:#8794ab;--gold:#f5c542;
+  --t1:#ffd34d;--t2:#ff9a3c;--t3:#ff6b6b;--t4:#b58cff;--t5:#5fb7ff;
+  --head:"Oxanium",ui-sans-serif,system-ui,sans-serif;--body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--text);font-family:var(--body);font-weight:500;line-height:1.5;min-height:100vh;
+  background:var(--bg);
+  background-image:radial-gradient(1000px 420px at 12% -140px,rgba(245,197,66,.10),transparent 70%),radial-gradient(900px 400px at 95% -100px,rgba(95,183,255,.10),transparent 70%)}
+h1,h2,h3{font-family:var(--head);margin:0;font-weight:800}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+*{scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+::selection{background:rgba(245,197,66,.3)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+.pi{width:22px;height:22px;image-rendering:pixelated;flex:none;display:block}
+
+/* ---------- header ---------- */
+header{position:relative;z-index:30;background:rgba(10,14,22,.92);border-bottom:1px solid var(--line)}
+@media(min-width:760px){header{position:sticky;top:0;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}}
+.bar{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;min-width:0}
+.logo{width:46px;height:auto;image-rendering:pixelated;flex:none;filter:drop-shadow(0 2px 10px rgba(255,150,40,.45))}
+.brand h1{font-size:26px;letter-spacing:1.5px;line-height:1;text-transform:uppercase;white-space:nowrap;background:linear-gradient(90deg,#fff,#ffe08a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand small{display:block;color:var(--mute);font-size:12px;font-weight:600;margin-top:3px}
+.spacer{flex:1}
+.search{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:9px 14px;width:230px;max-width:100%;transition:border-color .15s,box-shadow .15s}
+.search:focus{border-color:var(--gold);outline:none;box-shadow:0 0 0 3px rgba(245,197,66,.15)}
+.seg{display:flex;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:3px;gap:2px}
+.seg button{background:transparent;border:0;border-radius:7px;padding:6px 12px;font-weight:700;font-size:13px;color:var(--mute);transition:background .15s,color .15s}
+.seg button:hover{color:var(--text)}
+.seg button[aria-pressed=true]{background:var(--panel2);color:var(--text);box-shadow:0 1px 0 rgba(255,255,255,.06) inset}
+.btn{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:8px 14px;font-weight:700;transition:transform .12s,border-color .15s,background .15s,filter .15s}
+.btn:hover{border-color:#3a4a68;background:#1d2840}
+.btn:active{transform:translateY(1px)}
+.btn.go{background:var(--gold);border-color:var(--gold);color:#1a1405}
+.btn.go:hover{background:var(--gold);filter:brightness(1.08)}
+.btn.danger{border-color:#6b2d3a;color:#ff8f9f}
+.btn.sm{padding:5px 10px;font-size:13px;border-radius:8px}
+nav{display:flex;gap:4px;overflow-x:auto;padding:2px 0 0}
+nav button{flex:none;display:flex;flex-direction:column;align-items:center;gap:5px;min-width:76px;background:transparent;border:0;border-bottom:3px solid transparent;border-radius:10px 10px 0 0;padding:9px 12px 8px;color:var(--mute);font-weight:700;font-size:13px;transition:color .15s,background .15s,border-color .2s}
+nav button:hover{color:var(--text);background:rgba(255,255,255,.04)}
+nav button[aria-selected=true]{color:#fff;border-bottom-color:var(--gold);background:linear-gradient(180deg,transparent,rgba(245,197,66,.10))}
+nav .pi{width:28px;height:28px;transition:transform .18s}
+nav button:hover .pi,nav button[aria-selected=true] .pi{transform:translateY(-2px) scale(1.1)}
+
+main{padding:28px 0 70px}
+.sectionhead{display:flex;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.sectionhead h2{font-size:30px;display:flex;align-items:center;gap:12px;letter-spacing:.3px}
+.sectionhead h2 .pi{width:34px;height:34px}
+.sectionhead p{margin:0;color:var(--mute);font-size:14px}
+.stats{display:flex;gap:8px;margin-left:auto;flex-wrap:wrap}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px 12px;font-size:13px;color:var(--mute)}
+.stat b{color:var(--text);font-family:var(--head);font-size:16px;margin-right:4px}
+
+/* ---------- overall list ---------- */
+.lh{display:grid;grid-template-columns:84px 52px minmax(0,1fr) 70px minmax(0,1.4fr);gap:14px;padding:0 16px 8px 0;color:var(--mute);font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase}
+.board{display:flex;flex-direction:column;gap:8px}
+.row{display:grid;grid-template-columns:84px 52px minmax(0,1fr) 70px minmax(0,1.4fr);align-items:center;gap:14px;width:100%;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:0 16px 0 0;min-height:76px;overflow:hidden;transition:transform .16s ease,border-color .16s,background .16s,box-shadow .16s}
+.row:hover{transform:translateX(3px);border-color:#3a4a68;background:var(--panel2);box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.rk{align-self:stretch;display:flex;align-items:center;justify-content:center;font-family:var(--head);font-weight:800;font-size:28px;color:var(--mute);background:#0e1522;clip-path:polygon(0 0,100% 0,calc(100% - 18px) 100%,0 100%);padding-right:10px}
+.rk.r1{background:linear-gradient(135deg,#ffe58a,#d99a12);color:#2b1c00}
+.rk.r2{background:linear-gradient(135deg,#eef2f8,#9aa6b8);color:#1b2433}
+.rk.r3{background:linear-gradient(135deg,#f0a672,#b3612a);color:#2e1604}
+.av{width:48px;height:48px;border-radius:8px;image-rendering:pixelated;background:var(--panel2);object-fit:cover;opacity:0;transition:opacity .3s,transform .18s}
+.av.ld{opacity:1}
+.row:hover .av,.pl:hover .av{transform:scale(1.07)}
+.nm{font-weight:700;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:flex;align-items:center;gap:8px}
+.ttl{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;margin-top:1px}
+.ttl svg{width:12px;height:12px;flex:none}
+.ttl em{font-style:normal;color:var(--mute);font-weight:600}
+.rg{display:flex;justify-content:center}
+.reg{display:inline-block;min-width:34px;text-align:center;border-radius:6px;padding:2px 8px;font-family:var(--head);font-weight:800;font-size:13px;color:#fff}
+.tbs{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;align-items:flex-start}
+.ed{display:inline-block;border-radius:5px;padding:0 6px;font-size:11px;font-weight:800;border:1px solid;line-height:1.5}
+.ed.java{color:#6fd3ff;border-color:#2f6f8f}.ed.cracked{color:#ffb86b;border-color:#8f5a2f}
+
+/* tier badge */
+.tb{display:flex;flex-direction:column;align-items:center;gap:3px;width:46px;position:relative}
+.tbi{width:40px;height:40px;border-radius:50%;background:#0a0f18;border:2px solid currentColor;display:grid;place-items:center;box-shadow:0 0 14px -2px currentColor;transition:transform .15s}
+.tb:hover .tbi{transform:scale(1.1)}
+.tbi .pi{width:24px;height:24px}
+.tbt{font-family:var(--head);font-weight:800;font-size:12px;color:currentColor;line-height:1}
+.tb.lt .tbi{border-style:dashed;box-shadow:none}
+.c1{color:var(--t1)}.c2{color:var(--t2)}.c3{color:var(--t3)}.c4{color:var(--t4)}.c5{color:var(--t5)}
+.tb.ret{width:auto;min-width:46px;gap:5px}
+.tb.ret .tbi{background:#0a0d13;border:3px solid #1e2634;box-shadow:0 0 0 2px rgba(30,38,52,.55);filter:none}
+.tb.ret .tbt{background:#1e2634;border-radius:999px;padding:3px 9px 2px}
+
+/* ---------- gamemode columns ---------- */
+.cols{display:grid;grid-template-columns:repeat(5,minmax(210px,1fr));gap:12px;overflow-x:auto;padding-bottom:8px;align-items:start}
+.col{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;min-width:210px}
+.col h3{display:flex;align-items:center;gap:10px;padding:12px 14px;font-size:19px;background:linear-gradient(90deg,rgba(255,255,255,.06),transparent);border-bottom:1px solid var(--line);color:currentColor}
+.col h3 .pi{width:26px;height:26px}
+.col h3 small{margin-left:auto;font-family:var(--body);font-size:12px;color:var(--mute);font-weight:600}
+.col h3 span{color:var(--text)}
+.col .list{max-height:68vh;overflow:auto}
+.pl{display:flex;align-items:center;gap:10px;width:100%;background:none;border:0;border-bottom:1px solid var(--line);padding:8px 14px;text-align:left;transition:background .12s,padding-left .15s}
+.pl:last-child{border-bottom:0}
+.pl:hover{background:var(--panel2);padding-left:18px}
+.pl .av{width:32px;height:32px;border-radius:6px}
+.pl .n{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700;color:var(--text)}
+.pl .tags{display:flex;align-items:center;gap:6px;flex:none}
+.pl.ret .n{color:var(--mute)}
+.arr{font-size:11px;font-weight:800}
+.rtag{display:inline-block;border:1px solid var(--mute);color:var(--mute);border-radius:4px;padding:0 5px;font-family:var(--head);font-weight:800;font-size:11px;line-height:1.4}
+.none{padding:14px;color:var(--mute);font-size:13px}
+.empty{background:var(--panel);border:1px dashed var(--line);border-radius:14px;padding:56px 24px;text-align:center;color:var(--mute)}
+#view.swap{animation:swap .24s ease}
+@keyframes swap{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ---------- modal ---------- */
+dialog{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:16px;padding:0;width:min(640px,94vw);max-height:92vh;overflow:auto;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+dialog::backdrop{background:rgba(4,6,10,.72);backdrop-filter:blur(4px)}
+dialog[open]{animation:pop .2s cubic-bezier(.2,.8,.3,1)}
+dialog[open]::backdrop{animation:bd .2s ease}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes bd{from{opacity:0}to{opacity:1}}
+.pm{display:flex;gap:22px;padding:24px;background:radial-gradient(500px 200px at 20% 0,rgba(245,197,66,.10),transparent 70%);border-bottom:1px solid var(--line);align-items:center}
+.pm-skin{width:120px;height:140px;flex:none;display:grid;place-items:center}
+.pm-skin .av{width:auto;height:140px;max-width:120px;background:none;border-radius:0;object-fit:contain}
+.pm-main{min-width:0;flex:1}
+.pm-name{font-family:var(--head);font-weight:800;font-size:32px;line-height:1.1;display:flex;align-items:center;gap:10px;flex-wrap:wrap;word-break:break-all}
+.pm .ttl{font-size:15px;margin:6px 0 14px}
+.pm .ttl svg{width:14px;height:14px}
+.pm-st{display:flex;gap:10px;flex-wrap:wrap}
+.st{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:6px 14px;text-align:center;min-width:80px}
+.st b{display:block;font-family:var(--head);font-size:22px;line-height:1.2}
+.st span{font-size:11px;color:var(--mute);font-weight:700}
+.pm-sec{padding:18px 24px;border-bottom:1px solid var(--line)}
+.pm-sec h3{font-size:16px;color:var(--mute);margin-bottom:12px}
+.pm-sec .tbs{justify-content:flex-start;gap:14px}
+.mrow{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:7px 12px;margin-bottom:6px}
+.mn{display:flex;align-items:center;gap:10px;font-weight:700}
+.mn .pi{width:24px;height:24px}
+.ctl{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.rchk{display:flex;align-items:center;gap:5px;font-size:13px;color:var(--mute);font-weight:700;cursor:pointer}
+.rchk input{accent-color:var(--gold)}
+select,.pin,.fi,.arow input{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:7px 10px;transition:border-color .15s}
+select:focus,.pin:focus,.fi:focus,.arow input:focus{border-color:var(--gold);outline:none}
+.pin{width:130px}
+.retire h3{font-size:16px;margin-bottom:10px;color:var(--text)}
+.mfoot{padding:14px 24px;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.sub{color:var(--mute);font-size:13px}
+
+/* ---------- admin ---------- */
+.admin{background:var(--panel);border:1px solid rgba(245,197,66,.5);border-radius:14px;padding:18px;margin-bottom:26px;animation:swap .25s ease;box-shadow:0 0 40px -18px var(--gold)}
+.admin h3{font-size:20px;margin-bottom:12px}
+.arow{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.arow+.arow{margin-top:10px}
+.mh{display:flex;justify-content:space-between;align-items:center;margin-top:18px;gap:8px;flex-wrap:wrap}
+.mh h3{font-size:17px;margin:0}
+.mlist{display:grid;gap:6px;margin-top:12px;max-height:340px;overflow:auto;padding-right:4px}
+.mi{display:flex;align-items:center;gap:10px;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:6px 10px}
+.mi .av{width:32px;height:32px;border-radius:6px}
+.mi .nm{flex:1;font-size:15px}
+.fi{width:100%;margin:6px 0 12px}
+.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);background:var(--gold);color:#1a1405;font-weight:700;padding:10px 18px;border-radius:10px;opacity:0;transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.3,1);pointer-events:none;z-index:99;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+footer{border-top:1px solid var(--line);color:var(--mute);font-size:13px;padding:22px 0 40px}
+footer details{max-width:560px;margin:0 auto 12px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 16px}
+footer summary{cursor:pointer;font-weight:700;color:var(--text)}
+.leg{display:grid;grid-template-columns:1fr 1fr;gap:6px 28px;margin-top:12px}
+.leg div{display:flex;justify-content:space-between;gap:10px}
+footer p{text-align:center;margin:0}
+@media(max-width:820px){
+  .lh{display:none}
+  .row{grid-template-columns:64px 44px minmax(0,1fr) auto;row-gap:8px;padding:0 12px 10px 0}
+  .rk{font-size:22px}
+  .row .tbs{grid-column:1/-1;justify-content:flex-start;padding-left:12px}
+  .row .rg{grid-column:4}
+  .pm{flex-direction:column;text-align:center}
+  .pm-main,.pm-st{justify-content:center}
+  .pm-name{justify-content:center}.pm .ttl{justify-content:center}
+  .stats{margin-left:0}
+  .brand h1{font-size:21px}.search{width:100%}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.ub{display:flex;align-items:center;gap:8px}
+.ub .av{width:22px;height:22px;border-radius:5px}
+.autherr{color:#ff8f9f!important}
+select.fi{margin-top:0}
+.demo{background:rgba(245,197,66,.09);border:1px solid rgba(245,197,66,.4);color:#ffe9a6;border-radius:12px;padding:10px 14px;font-size:14px;margin-bottom:18px}
+button:disabled{opacity:.6;cursor:default}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar wrap">
+    <a class="brand" href="#overall">
+      <img class="logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAdCAYAAAAkXAW5AAACqklEQVR4nO2UO0xTURjHf/fec+/t49JaLKAQJDZN0IEUo4MTTr5iiLIYDWok0c3BQWc3cHPA1+ACxhgHE52UxOigg4kan0lj8C0FtFik2Pa293FcXSy1mOjQ33q+7/x/yTnfBw0a/Ico9TSNnOqTezc4+IrGjfdhTh6fqOueP5Y4dmJAbuv4xsboDO2tHq/vzDP9wiHZF6eciPOqEuXBuzayuRDjFy/9kZRYqmBwoFfuinxif7+AnIY9PUf6nuTRTRtTKHy/kiGxOc+eo53sGdrJ23QKQ2TkpbO3ahapWnh9Z0SmYg72D4/Z7w6xZJj2VAtoGlPPF1EVhcT2NqykRcUuoPmLaOi4H3Ry7W10bLlTk0jVojNrdVlotliIhugP5igXHaT0iXWFWZ1aSWuvhe+VcApFhKlQDAS5cNdkzccZBg+aaFtna5Ko+hyaLskGItz2O+ldKLC+SaGg+eSnihS/FrGaYmiWRlmYiIDF08kQl+8HONRl47uVWvKXlvA8cHxQhcSzYfKzhxlUCQYMREBSygukG0CzwuirIsSTLUixiFv00JB/R+KLLekRi+ztmER9Z5N2JBY+tq0QclSkbtHcFcGMGnimoJt5xvbpFD4bZGaLNUuo1Q5PZzzl4YzHh2c55vKSJqFQATzfB6EQ745gWiqu7aIJsNUEkedPyVRsOoeyNU/HkiM69mZBGQPAZbwnKGOapOCC70s820U1TEREZ3q2xPCEx7nReQXma82vTeJXDr0sKSMJQ7YYKqYPuA7kK3x6nefMPZ1z1x7XtTnrahruNGRshcrugTALcw7rz+eXtbar/onf8cSI4pUlk88qjD4OLye/fokdqQAhU2HdJp0dR+L/RiKYzuICTQb0W9l/I3EgbSsl4MUPyeGr2rIlGjRo0GApfgKJSf+aTp1A7AAAAABJRU5ErkJggg==" alt="" width="46" height="40">
+      <div><h1 id="siteTitle">Doom Tierlist</h1><small id="siteSub">Official PvP rankings</small></div>
+    </a>
+    <div class="spacer"></div>
+    <div class="seg" id="edSeg" role="group" aria-label="Filter by edition">
+      <button data-ed="all" aria-pressed="true">All</button><button data-ed="java" aria-pressed="false">Java</button><button data-ed="cracked" aria-pressed="false">Cracked</button>
+    </div>
+    <input class="search" id="search" type="search" placeholder="Search a player" aria-label="Search a player">
+    <button class="btn ub" id="userBtn">Sign in</button>
+    <button class="btn" id="adminBtn">Owner login</button>
+  </div>
+  <div class="wrap"><nav id="tabs" role="tablist" aria-label="Game modes"></nav></div>
+</header>
+
+<main class="wrap">
+  <div id="banner"></div>
+  <div id="adminPanel"></div>
+  <div id="view"></div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <details><summary>How points and titles work</summary><div class="leg" id="legend"></div></details>
+    <p id="upd" style="margin-bottom:6px"></p>
+    <p>Tiers go from LT5 (lowest) to HT1 (highest). HT is High Tier and LT is Low Tier.</p>
+  </div>
+</footer>
+
+<dialog id="modal"></dialog>
+<dialog id="loginDlg">
+  <div class="pm-sec"><h2 id="loginTitle" style="font-size:22px">Owner login</h2></div>
+  <div class="pm-sec">
+    <p id="loginMsg" class="sub" style="margin:0 0 6px"></p>
+    <input class="fi" id="pw" type="password" placeholder="Password" autocomplete="off">
+    <input class="fi" id="pw2" type="password" placeholder="Repeat password" autocomplete="off" style="display:none;margin-bottom:0">
+  </div>
+  <div class="mfoot"><button class="btn" id="loginCancel">Cancel</button><button class="btn go" id="loginOk">Log in</button></div>
+</dialog>
+<dialog id="authDlg">
+  <div class="pm-sec">
+    <div class="seg" role="group" aria-label="Sign in or sign up" style="width:max-content;margin-bottom:14px">
+      <button data-auth="in" aria-pressed="true">Sign in</button><button data-auth="up" aria-pressed="false">Sign up</button>
+    </div>
+    <p id="authMsg" class="sub" style="margin:0 0 8px"></p>
+    <input class="fi" id="auName" placeholder="Minecraft username" maxlength="16" autocomplete="off" aria-label="Minecraft username">
+    <select class="fi" id="auEd" aria-label="Edition" style="display:none"><option value="java">Java</option><option value="cracked">Cracked</option></select>
+    <input class="fi" id="auPw" type="password" placeholder="Password" autocomplete="off" aria-label="Password">
+    <input class="fi" id="auPw2" type="password" placeholder="Repeat password" autocomplete="off" aria-label="Repeat password" style="display:none">
+  </div>
+  <div class="mfoot"><button class="btn" id="authCancel">Cancel</button><button class="btn go" id="authOk">Sign in</button></div>
+</dialog>
+<dialog id="cfDlg">
+  <div class="pm-sec"><h2 style="font-size:20px;margin-bottom:8px">Are you sure?</h2><p id="cfMsg" class="sub" style="margin:0;font-size:15px"></p></div>
+  <div class="mfoot"><button class="btn" id="cfCancel">Cancel</button><button class="btn danger" id="cfOk">Confirm</button></div>
+</dialog>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ---------- pixel icons ---------- */
+var PAL={"k": "#14161c", "1": "#8ff7ea", "2": "#34cdbd", "3": "#1a8c8d", "b": "#8a5a2b", "B": "#55341a", "y": "#ffe36b", "Y": "#e0a421", "r": "#e04343", "R": "#9c1f2b", "p": "#d58bff", "P": "#8a3fd0", "m": "#ff5fc8", "w": "#ffffff", "g": "#c9ced6", "G": "#8b93a1", "H": "#4b5260", "o": "#ff8a2a", "O": "#ffc247", "n": "#5bd16b", "N": "#2f8f3f", "l": "#6ec6ff", "L": "#2d7be0"};
+var PIX={"sword":["..............kk",".............k12","............k12k","...........k12k.","..........k12k..",".........k12k...","........k12k....","...kk..k12k.....","..kYykk12k......","...kYy12k.......","....kYyk........","...kbBYyk.......","..kbBkkYyk......",".kbBk..kk.......","kyYk............",".kk............."],"axe":["................","..........kkkk..",".........k1223k.","........k122223k",".......k122223k.",".......k12223k..",".......k1223k...","........kbBk....",".......kbBk.....","......kbBk......",".....kbBk.......","....kbBk........","...kbBk.........","..kbBk..........",".kbBk...........","..kk............"],"crystal":[".......kk.......","......kpmk......",".....kppmmk.....","....kppPPmmk....","...kppPPPPmmk...","..kppPPwwPPmmk..",".kppPPwwwwPPmmk.","..kmmPPwwPPmmk..","...kmmPPPPmmk...","....kmmPPmmk....",".....kmmmmk.....","...kkkkmmkkkk...","..kHHHHHHHHHHk..","..kGHGHGHGHGHk..","..kHHHHHHHHHHk..","...kkkkkkkkkk..."],"pot":["......kkkk......",".....kbbbbk.....",".....kggggk.....",".....kggggk.....",".....kggggk.....","....krrrrrRk....","...krwrrrrrRk...","..krwrrrrrrrRk..","..krwrrrrrrrRk..","..krwrrrrrrrRk..","..krrrrrrrrrRk..","..krrrrrrrrrRk..","...krrrrrrrRk...","....kRRRRRRk....",".....kkkkkk.....","................"],"nethpot":["......kkkk......",".....kbbbbk.....",".....kggggk.....",".....kggggk.....",".....kggggk.....","....koooooRk....","...koOoooooRk...","..koOoooooooRk..","..koOoooooooRk..","..koOoooooooRk..","..koooooooooRk..","..koooooooooRk..","...koooooooRk...","....kRRRRRRk....",".....kkkkkk.....","................"],"uhc":["................","........kkk.....",".......knnNk....","......kBnnnk....",".....kkBkkk.....","....kyyyyYYk....","...kyywyYYYYk...","..kyywyYYYYYYk..","..kyywYYYYYYYk..","..kyyYYYYYYYYk..","..kyYYYYYYYYYk..","..kYYYYYYYYYYk..","...kYYYYYYYYk...","....kYYYYYYk....",".....kkkkkk.....","................"],"mace":["..........k.....",".......k.kHk.k..","......kHkgggkHk.",".......kgggGGk..","......kggwGGGGk.",".....kHggGGGGHHk","......kgGGGGHHk.",".......kGGGHHk..","......kHbGHHkHk.","......kbBkHk.k..",".....kbBk.k.....","....kbBk........","...kbBk.........","..kbBk..........",".kbBk...........","..kk............"],"smp":["................",".......kk.......",".....kknnkk.....","...kknnnnnnkk...",".kknnnnnnNnnnkk.","knnnnnNnnnnnnnnk","kNNnnnnnNnnnnNNk","kNNNNnnnnnnNNNNk","kbbNNNNnnNNNNBBk","kbbbbNNNNNNBBBBk","kbbBbbbNNBkBBBBk","kbbbbbbbBBBBkBBk",".kkbbBbbBBBBBkk.","...kkbbbBkBkk...",".....kkbBkk.....",".......kk......."],"vanilla":["................",".kkkkkkkkkkkkkk.","kBBBBBBBBBBBBBBk","kBBbBBbBBbBBbBBk","kBBbBBbBBbBBbBBk","kBBBBBBBBBBBBBBk",".kkkkkkkkkkkkkk.","kbbbbbbbbbbbbbbk","kbbGgGbbbggggbbk","kbbGgGbbbggggbbk","kbbGgGbbbGGGGbbk","kbbGgGbbbbBBbbbk","kbbGgGbbbbBBbbbk","kbbbbbbbbbBBbbbk","kbbbbbbbbbbbbbbk",".kkkkkkkkkkkkkk."],"overall":["................","....kkkkkkkk....","..kkyyyyyyyYkk..",".kYkywyyyyyYkYk.",".kYkywyyyyyYkYk.",".kYkyyyyyyyYkYk.","..kYyyyyyyyYYk..","...kkyyyyyYkk...",".....kyyyYk.....","......kYYk......",".....kkYYkk.....","....kYYYYYYk....","....kYYYYYYk....","...kBBBBBBBBk...","...kBBBBBBBBk...","....kkkkkkkk...."],"cart":[".......kok......","...kkkkBkkkkk...","..krrrrrrrrrRk..","..krrrrrrrrrRk..","..kwwRwwRwRwgk..","..kwwRwwRwRwgk..","..krrrrrrrrrRk..",".kkRRRRRRRRRRkk.","kggggggggggggggk","kGGGGGGGGGGGGGGk","kGHHHHHHHHHHHHGk","kGGGGGGGGGGGGGGk","kHHHHHHHHHHHHHHk",".kkgHkkkkkkgHkk.","..kHHk....kHHk..","...kk......kk..."]};
+var _ic={};
+function icon(id){
+  if(_ic[id])return _ic[id];
+  var rows=PIX[id];if(!rows)return "";
+  var by={};
+  rows.forEach(function(r,y){for(var x=0;x<r.length;x++){var c=r[x];if(c!==".")(by[c]=by[c]||[]).push("M"+x+" "+y+"h1v1h-1z")}});
+  var paths=Object.keys(by).map(function(c){return '<path fill="'+PAL[c]+'" d="'+by[c].join("")+'"/>'}).join("");
+  return _ic[id]='<svg class="pi" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true">'+paths+'</svg>';
+}
+
+/* ---------- config ---------- */
+var MODES=[
+  {id:"overall",name:"Overall"},{id:"sword",name:"Sword"},{id:"crystal",name:"Crystal"},{id:"pot",name:"Pot"},
+  {id:"smp",name:"SMP"},{id:"uhc",name:"UHC"},{id:"axe",name:"Axe"},{id:"mace",name:"Mace"},{id:"cart",name:"Cart PVP"},
+  {id:"nethpot",name:"NethPot"},{id:"vanilla",name:"Vanilla"}
+];
+var TIERS=["HT1","LT1","HT2","LT2","HT3","LT3","HT4","LT4","HT5","LT5"];
+var POINTS={HT1:60,LT1:44,HT2:28,LT2:16,HT3:10,LT3:6,HT4:4,LT4:3,HT5:2,LT5:1};
+var REGIONS={NA:"#d9505b",EU:"#3fae63",AS:"#9a63e0",SA:"#e8913a",AU:"#2fa9bd",AF:"#c2a23e",ME:"#bf7448"};
+var TITLES=[[400,"Combat Grandmaster","#ffd34d"],[250,"Combat Master","#ff9a3c"],[100,"Combat Ace","#b58cff"],[50,"Combat Specialist","#5fb7ff"],[20,"Combat Cadet","#5bd16b"],[10,"Combat Novice","#9fb0c5"],[0,"Rookie","#8794ab"]];
+var KEY="mctierlist.v1";
+var SPAL={H:"#3a2616",s:"#c48a63",n:"#9a6446",W:"#ffffff",B:"#4a55c9",m:"#5c3a22",t:"#17a7a7"};
+function pixUri(rows){var r="";rows.forEach(function(row,y){for(var x=0;x<row.length;x++){var c=row.charAt(x);if(c!==".")r+='<rect x="'+x+'" y="'+y+'" width="1" height="1" fill="'+SPAL[c]+'"/>'}});
+  return "data:image/svg+xml,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+rows[0].length+' '+rows.length+'" shape-rendering="crispEdges">'+r+'</svg>')}
+var STEVE_ROWS=["HHHHHHHH","HHHHHHHH","HssssssH","ssssssss","sWBssBWs","sssnnsss","ssmmmmss","ssssssss"];
+var STEVE_HEAD=pixUri(STEVE_ROWS);
+var STEVE_ARM="..ss"+"tttttttt"+"ss..";
+var STEVE_BUST=pixUri(STEVE_ROWS.map(function(r){return "...."+r+"...."}).concat(["..tttttttttttt..","..tttttttttttt..",STEVE_ARM,STEVE_ARM,STEVE_ARM,STEVE_ARM,STEVE_ARM,STEVE_ARM]));
+var FB=STEVE_HEAD;
+var SRC="<!DOCTYPE html>\n"+document.documentElement.outerHTML;
+/* ===================== SETUP =====================
+   To go live, paste your Supabase details between the quotes.
+   Leave both empty to run in demo mode (data stays in this browser only). */
+var SUPABASE_URL="";
+var SUPABASE_KEY="";
+/* ================================================= */
+var PUBLISHED=null;
+var STATIC=!!PUBLISHED;
+var REMOTE=!STATIC&&!!(SUPABASE_URL&&SUPABASE_KEY);
+var NAME_RE=/^[A-Za-z0-9_]{1,16}$/;
+var MODE_IDS=MODES.slice(1).map(function(m){return m.id});
+
+/* ---------- data layer: one rpc() used everywhere ---------- */
+function rpc(fn,args){
+  if(STATIC)return fn==="get_data"?Promise.resolve(JSON.parse(JSON.stringify(PUBLISHED))):Promise.reject(new Error("This page is read-only"));
+  if(!REMOTE)return new Promise(function(res,rej){try{res(localRpc(fn,args||{}))}catch(e){rej(e)}});
+  var h={"Content-Type":"application/json",apikey:SUPABASE_KEY};
+  if(SUPABASE_KEY.indexOf("eyJ")===0)h.Authorization="Bearer "+SUPABASE_KEY;
+  return fetch(SUPABASE_URL.replace(/\/+$/,"")+"/rest/v1/rpc/"+fn,{method:"POST",headers:h,body:JSON.stringify(args||{})})
+    .then(function(r){return r.text().then(function(txt){
+      var j=null;try{j=txt?JSON.parse(txt):null}catch(e){}
+      if(!r.ok)throw new Error((j&&j.message)||"Request failed ("+r.status+")");
+      return j})},function(){throw new Error("Could not reach the server. Check your internet.")});
+}
+
+/* ---------- demo backend (same rules as the SQL file) ---------- */
+var L=null;
+function lload(){var d;try{var s=localStorage.getItem(KEY);if(s)d=JSON.parse(s)}catch(e){}
+  d=d||{title:"Doom Tierlist",sub:"Official PvP rankings",players:[]};lmigrate(d);return d}
+function lmigrate(d){
+  if(d.ownerPw!=="demo"&&d.ownerPw!=="custom"){d.pwHash=hash("demo");d.ownerPw="demo"}
+  if(!d.sampleRemoved){var S=["Notch","Dream","Technoblade","Steve","Alex"];d.players=d.players.filter(function(p){return S.indexOf(p.name)<0});d.sampleRemoved=true}
+  if(!d.nameV2){d.title="Doom Tierlist";d.nameV2=true}
+  d.players.forEach(function(p,i){delete p.pin;if(!p.edition)p.edition="java";if(!p.id)p.id="p"+Date.now().toString(36)+i;if(!p.tiers)p.tiers={};if(!p.retired)p.retired={};if(!p.region)p.region=""});
+}
+function lsave(){try{localStorage.setItem(KEY,JSON.stringify(L))}catch(e){throw new Error("Could not save in this browser")}}
+function lowner(pw){if(!pw||hash(pw)!==L.pwHash)throw new Error("Wrong owner password")}
+function lfind(id){var p=L.players.filter(function(x){return x.id===id})[0];if(!p)throw new Error("Player not found");return p}
+function lplayer(id,pw){var p=lfind(id);if(!p.pass)throw new Error("No account for this player yet. Use Sign up first.");if(hash(p.id+":"+(pw||""))!==p.pass)throw new Error("Wrong password.");return p}
+function lcheck(ed,reg,tiers){
+  if(["java","cracked"].indexOf(ed)<0)throw new Error("Invalid edition");
+  if(reg&&!REGIONS[reg])throw new Error("Invalid region");
+  if(tiers){if(typeof tiers!=="object")throw new Error("Invalid tiers");Object.keys(tiers).forEach(function(k){if(MODE_IDS.indexOf(k)<0||TIERS.indexOf(tiers[k])<0)throw new Error("Invalid tier")})}
+}
+function lclean(ret,tiers){var o={};Object.keys(ret||{}).forEach(function(k){if(tiers[k]&&ret[k])o[k]=true});return o}
+function localRpc(fn,a){
+  if(!L)L=lload();
+  var cl=function(x){return JSON.parse(JSON.stringify(x))};
+  switch(fn){
+    case"get_data":return {title:L.title,sub:L.sub,players:L.players.map(function(p){return {id:p.id,name:p.name,edition:p.edition,region:p.region||"",tiers:cl(p.tiers),retired:cl(p.retired),has_account:!!p.pass}})};
+    case"owner_login":lowner(a.p_pw);return true;
+    case"owner_add_player":lowner(a.p_pw);
+      var n=String(a.p_name||"").trim();if(!NAME_RE.test(n))throw new Error("Use 1-16 letters, numbers or underscores");
+      lcheck(a.p_edition,a.p_region);
+      if(L.players.some(function(x){return x.name.toLowerCase()===n.toLowerCase()&&x.edition===a.p_edition}))throw new Error("That player already exists");
+      var np={id:"p"+Date.now().toString(36)+Math.floor(Math.random()*1e4),name:n,edition:a.p_edition,region:a.p_region||"",tiers:{},retired:{}};
+      L.players.push(np);lsave();return {id:np.id};
+    case"owner_set_player":lowner(a.p_pw);var p=lfind(a.p_id);
+      lcheck(a.p_edition,a.p_region,a.p_tiers);
+      if(L.players.some(function(x){return x.id!==p.id&&x.name.toLowerCase()===p.name.toLowerCase()&&x.edition===a.p_edition}))throw new Error("That player already exists in that edition");
+      p.edition=a.p_edition;p.region=a.p_region||"";p.tiers=cl(a.p_tiers||{});p.retired=lclean(a.p_retired,p.tiers);lsave();return true;
+    case"owner_delete_player":lowner(a.p_pw);lfind(a.p_id);L.players=L.players.filter(function(x){return x.id!==a.p_id});lsave();return true;
+    case"owner_delete_all":lowner(a.p_pw);L.players=[];lsave();return true;
+    case"owner_reset_account":lowner(a.p_pw);lfind(a.p_id).pass=null;lsave();return true;
+    case"owner_set_titles":lowner(a.p_pw);L.title=String(a.p_title||"Doom Tierlist").slice(0,60);L.sub=String(a.p_sub||"").slice(0,80);lsave();return true;
+    case"owner_change_password":lowner(a.p_pw);if(!a.p_new||a.p_new.length<6)throw new Error("Use at least 6 characters");L.pwHash=hash(a.p_new);L.ownerPw="custom";lsave();return true;
+    case"owner_replace_all":lowner(a.p_pw);var out=[];
+      (a.p_players||[]).forEach(function(x,i){try{
+        var nm=String(x.name||"").trim();if(!NAME_RE.test(nm))return;
+        var ed=x.edition||"java",tr=x.tiers&&typeof x.tiers==="object"?x.tiers:{};lcheck(ed,x.region||"",tr);
+        if(out.some(function(o){return o.name.toLowerCase()===nm.toLowerCase()&&o.edition===ed}))return;
+        out.push({id:"p"+Date.now().toString(36)+i,name:nm,edition:ed,region:x.region||"",tiers:cl(tr),retired:lclean(x.retired,tr)})}catch(e){}});
+      L.players=out;lsave();return out.length;
+    case"player_signup":var s=lfind(a.p_id);
+      if(s.pass)throw new Error("This player already has an account. Sign in instead.");
+      if(!a.p_password||a.p_password.length<4)throw new Error("Use a password with at least 4 characters.");
+      s.pass=hash(s.id+":"+a.p_password);lsave();return true;
+    case"player_signin":lplayer(a.p_id,a.p_password);return true;
+    case"player_retire":var r=lplayer(a.p_id,a.p_password);
+      if(!r.tiers[a.p_mode])throw new Error("You are not ranked in that gamemode");
+      r.retired[a.p_mode]=true;lsave();return true;
+  }
+  throw new Error("Unknown action");
+}
+
+/* ---------- state ---------- */
+var db={title:"Doom Tierlist",sub:"Official PvP rankings",players:[]},loaded=false,loadErr="";
+var mode="overall",admin=false,ownerPw=null,query="",edF="all";
+var ME_KEY="mctierlist.me",meId=null,mePw=null,authMode="in";
+function $(id){return document.getElementById(id)}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function toast(t){var el=$("toast");el.textContent=t;el.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(function(){el.classList.remove("show")},2200)}
+function hash(s){var h=5381;for(var i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))>>>0;return String(h)}
+function modeName(id){return MODES.filter(function(m){return m.id===id})[0].name}
+function byId(id){return db.players.filter(function(p){return p.id===id})[0]}
+function fail(e){toast(e&&e.message?e.message:"Something went wrong")}
+function getMe(){return meId?(byId(meId)||null):null}
+function setMe(p,pw){
+  meId=p?p.id:null;mePw=p?pw:null;
+  try{if(p)sessionStorage.setItem(ME_KEY,JSON.stringify({id:p.id,pw:pw}));else sessionStorage.removeItem(ME_KEY)}catch(e){}
+  renderUser();
+}
+function renderUser(){
+  var m=getMe();if(meId&&!m&&loaded){meId=null;mePw=null;try{sessionStorage.removeItem(ME_KEY)}catch(e){}}
+  $("userBtn").innerHTML=m?avatar(m)+'<span>'+esc(m.name)+'</span>':'Sign in';
+  $("userBtn").title=m?"Open your profile":"Sign in or sign up";
+}
+
+/* ---------- helpers ---------- */
+function points(p){var t=0;for(var k in p.tiers)t+=POINTS[p.tiers[k]]||0;return t}
+function best(p){var b=99;for(var k in p.tiers){var i=TIERS.indexOf(p.tiers[k]);if(i>=0&&i<b)b=i}return b}
+function isRet(p,m){return !!(p.retired&&p.retired[m]&&p.tiers[m])}
+function titleOf(p){var pt=points(p);for(var i=0;i<TITLES.length;i++)if(pt>=TITLES[i][0])return TITLES[i]}
+function ttlHtml(p){var t=titleOf(p),pt=points(p);return '<div class="ttl" style="color:'+t[2]+'"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="currentColor" d="M6 0l6 6-6 6-6-6z"/></svg>'+t[1]+' <em>('+pt+(pt===1?' point':' points')+')</em></div>'}
+function regHtml(p){return p.region?'<span class="reg" style="background:'+REGIONS[p.region]+'">'+p.region+'</span>':''}
+function edBadge(p){return '<span class="ed '+p.edition+'">'+(p.edition==="cracked"?"Cracked":"Java")+'</span>'}
+function avatar(p,kind){
+  var u=p.edition==="cracked"?(kind==="bust"?STEVE_BUST:STEVE_HEAD):"https://minotar.net/"+(kind==="bust"?"armor/bust/":"helm/")+encodeURIComponent(p.name)+"/"+(kind==="bust"?"180":"64")+".png";
+  return '<img class="av" src="'+u+'" alt="" loading="lazy" onload="this.classList.add(\'ld\')" onerror="this.onerror=null;this.src=FB">'}
+function badge(mid,t,ret){
+  var n=t.charAt(2);
+  return '<div class="tb c'+n+(t.indexOf("LT")===0?" lt":"")+(ret?" ret":"")+'" title="'+esc(modeName(mid))+" "+t+(ret?" (Retired)":"")+'"><span class="tbi">'+icon(mid)+'</span><span class="tbt">'+t+'</span></div>'}
+function badges(p){
+  return Object.keys(p.tiers).sort(function(a,b){return TIERS.indexOf(p.tiers[a])-TIERS.indexOf(p.tiers[b])}).map(function(k){return badge(k,p.tiers[k],isRet(p,k))}).join("")}
+function sortAll(list){return list.slice().sort(function(a,b){return points(b)-points(a)||best(a)-best(b)||a.name.localeCompare(b.name)})}
+function filtered(){var q=query.trim().toLowerCase();return db.players.filter(function(p){return (edF==="all"||p.edition===edF)&&(!q||p.name.toLowerCase().indexOf(q)>-1)})}
+
+/* ---------- render ---------- */
+function renderTabs(){
+  $("tabs").innerHTML=MODES.map(function(m){return '<button role="tab" aria-selected="'+(m.id===mode)+'" data-m="'+m.id+'">'+icon(m.id)+m.name+'</button>'}).join("")}
+function renderBanner(){
+  $("banner").innerHTML=(REMOTE||STATIC)?"":'<div class="demo"><b>Editing copy.</b> Your changes are saved only in this browser. When you are done, log in as owner and click <b>Download site for publishing</b>, then upload the file you get to your website host. Owner password here: <b>demo</b>.</div>'}
+function renderView(){
+  var list=filtered(),h="";
+  if(!loaded){
+    $("view").innerHTML=loadErr?'<div class="empty">Could not load the tier list.<br><span class="sub">'+esc(loadErr)+'</span><br><br><button class="btn go" id="retry">Try again</button></div>':'<div class="empty">Loading the tier list...</div>';
+    return}
+  if(mode==="overall"){
+    list=sortAll(list);
+    var j=db.players.filter(function(p){return p.edition==="java"}).length;
+    h+='<div class="sectionhead"><h2>'+icon("overall")+'Overall ranking</h2><div class="stats"><span class="stat"><b>'+db.players.length+'</b>players</span><span class="stat"><b>'+j+'</b>Java</span><span class="stat"><b>'+(db.players.length-j)+'</b>Cracked</span></div></div>';
+    if(!list.length)h+='<div class="empty">'+(db.players.length?'No players match your search.':'No players yet. Log in as owner to add the first one.')+'</div>';
+    else h+='<div class="lh"><span style="text-align:center">Rank</span><span></span><span>Player</span><span style="text-align:center">Region</span><span style="text-align:right">Tiers</span></div><div class="board">'+list.map(function(p,i){
+      return '<button class="row" data-p="'+p.id+'"><div class="rk '+(i<3?"r"+(i+1):"")+'"><span>'+(i+1)+'</span></div>'+avatar(p)+'<div style="min-width:0"><div class="nm">'+esc(p.name)+edBadge(p)+'</div>'+ttlHtml(p)+'</div><div class="rg">'+regHtml(p)+'</div><div class="tbs">'+(badges(p)||'<span class="sub">Unranked</span>')+'</div></button>'}).join("")+'</div>';
+  }else{
+    var ranked=list.filter(function(p){return p.tiers[mode]}).length;
+    h+='<div class="sectionhead"><h2>'+icon(mode)+modeName(mode)+'</h2><div class="stats"><span class="stat"><b>'+ranked+'</b>ranked players</span></div></div>';
+    h+='<div class="cols">'+[1,2,3,4,5].map(function(n){
+      var arr=list.filter(function(p){var t=p.tiers[mode];return t&&t.charAt(2)==n}).sort(function(a,b){
+        var ha=a.tiers[mode].charAt(0)==="H"?0:1,hb=b.tiers[mode].charAt(0)==="H"?0:1;return ha-hb||a.name.localeCompare(b.name)});
+      var body=arr.length?arr.map(function(p){
+        var up=p.tiers[mode].charAt(0)==="H";
+        return '<button class="pl'+(isRet(p,mode)?" ret":"")+'" data-p="'+p.id+'">'+avatar(p)+'<span class="n">'+esc(p.name)+'</span><span class="tags">'+(isRet(p,mode)?'<span class="rtag" title="Retired">R</span>':'')+(p.edition==="cracked"?'<span class="ed cracked">C</span>':'')+'<span class="arr c'+n+'" title="'+p.tiers[mode]+'">'+(up?"▲":"▼")+'</span></span></button>'}).join(""):'<div class="none">Nobody yet</div>';
+      return '<div class="col c'+n+'"><h3>'+icon("overall")+'<span>Tier '+n+'</span><small>'+arr.length+'</small></h3><div class="list">'+body+'</div></div>'}).join("")+'</div>';
+  }
+  $("view").innerHTML=h;
+}
+function renderAdmin(){
+  var el=$("adminPanel");$("adminBtn").textContent=admin?"Log out":"Owner login";
+  if(!admin){el.innerHTML="";return}
+  var regOpts=Object.keys(REGIONS).map(function(r){return '<option>'+r+'</option>'}).join("");
+  var list=db.players.slice().sort(function(a,b){return a.name.localeCompare(b.name)}).map(function(p){
+    return '<div class="mi">'+avatar(p)+'<span class="nm">'+esc(p.name)+edBadge(p)+regHtml(p)+'</span><button class="btn sm" data-edit="'+p.id+'">Edit</button><button class="btn sm danger" data-rm="'+p.id+'">Remove</button></div>'}).join("")||'<div class="none">No players yet.</div>';
+  el.innerHTML='<div class="admin"><h3>Owner panel</h3>'+
+   '<div class="arow"><input id="newName" placeholder="Minecraft username" maxlength="16" aria-label="New player name"><select id="newEd" aria-label="Edition"><option value="java">Java</option><option value="cracked">Cracked</option></select><select id="newReg" aria-label="Region">'+regOpts+'</select><button class="btn go" id="addP">Add player</button>'+
+   '<span class="spacer"></span>'+(REMOTE?'':'<button class="btn go" id="pub">Download site for publishing</button>')+'<button class="btn" id="exp">Export backup</button><label class="btn" style="cursor:pointer">Import backup<input type="file" id="imp" accept="application/json" hidden></label></div>'+
+   '<div class="arow"><input id="tt" value="'+esc(db.title)+'" aria-label="Site title"><input id="ts" value="'+esc(db.sub)+'" aria-label="Site subtitle"><button class="btn" id="saveT">Save titles</button><button class="btn" id="chPw">Change password</button></div>'+
+   '<div class="mh"><h3>Manage players ('+db.players.length+')</h3>'+(db.players.length?'<button class="btn sm danger" id="rmAll">Remove all players</button>':'')+'</div><div class="mlist">'+list+'</div></div>';
+}
+function renderLegend(){
+  $("legend").innerHTML=TIERS.map(function(t){return '<div><span>'+t+'</span><b>'+POINTS[t]+' pts</b></div>'}).join("")+
+    TITLES.slice(0,-1).map(function(t){return '<div style="color:'+t[2]+'"><span>'+t[1]+'</span><b>'+t[0]+'+</b></div>'}).join("")}
+function render(keepAdmin){renderTabs();renderView();if(!(keepAdmin&&admin&&$("adminPanel").contains(document.activeElement)))renderAdmin();renderUser()}
+function applyTitles(){$("siteTitle").textContent=db.title;$("siteSub").textContent=db.sub;document.title=db.title;
+  var u=$("upd");if(u)u.textContent=db.updated?"List updated "+new Date(db.updated).toLocaleDateString(undefined,{year:"numeric",month:"long",day:"numeric"}):""}
+
+/* ---------- loading and live refresh ---------- */
+function refresh(force){
+  return rpc("get_data").then(function(d){
+    var changed=JSON.stringify(d)!==JSON.stringify(db)||!loaded;
+    db=d;loaded=true;loadErr="";
+    if(changed||force){applyTitles();render(!force)}
+  }).catch(function(e){if(!loaded){loadErr=e.message;renderView()}});
+}
+setInterval(function(){if(REMOTE&&document.visibilityState==="visible"&&!document.querySelector("dialog[open]"))refresh(false)},20000);
+
+/* ---------- player modal ---------- */
+function openPlayer(id){
+  var p=byId(id);if(!p)return;
+  var rank=sortAll(db.players).indexOf(p)+1;
+  var regOpts='<option value="">None</option>'+Object.keys(REGIONS).map(function(r){return '<option'+(p.region===r?" selected":"")+'>'+r+'</option>'}).join("");
+  var top='<div class="pm"><div class="pm-skin">'+avatar(p,"bust")+'</div><div class="pm-main"><div class="pm-name">'+esc(p.name)+edBadge(p)+'</div>'+ttlHtml(p)+
+    '<div class="pm-st"><div class="st"><b>#'+rank+'</b><span>Overall</span></div><div class="st"><b>'+points(p)+'</b><span>Points</span></div>'+(p.region?'<div class="st"><b style="color:'+REGIONS[p.region]+'">'+p.region+'</b><span>Region</span></div>':'')+'</div></div></div>';
+  var body="";
+  if(admin){
+    body='<div class="pm-sec"><h3>Edit player</h3>'+
+      '<div class="mrow"><span>Edition</span><select data-ed-set="1"><option value="java"'+(p.edition==="java"?" selected":"")+'>Java</option><option value="cracked"'+(p.edition==="cracked"?" selected":"")+'>Cracked</option></select></div>'+
+      '<div class="mrow"><span>Region</span><select data-reg-set="1">'+regOpts+'</select></div>'+
+      '<div class="mrow"><span>Player account</span><span class="ctl"><span class="sub">'+(p.has_account?"Account created":"No account yet")+'</span>'+(p.has_account?'<button class="btn sm" id="resetPw">Reset password</button>':'')+'</span></div>'+
+      MODES.slice(1).map(function(m){
+        var t=p.tiers[m.id],r=isRet(p,m.id);
+        return '<div class="mrow"><span class="mn">'+icon(m.id)+m.name+'</span><span class="ctl"><label class="rchk" title="Mark as retired"><input type="checkbox" data-ret="'+m.id+'"'+(r?" checked":"")+(t?"":" disabled")+'> Retired</label><select data-set="'+m.id+'"><option value="">Unranked</option>'+TIERS.map(function(x){return '<option'+(x===t?" selected":"")+'>'+x+'</option>'}).join("")+'</select></span></div>'}).join("")+'</div>';
+  }else{
+    body='<div class="pm-sec"><h3>Tiers</h3><div class="tbs">'+(badges(p)||'<span class="sub">No tiers yet.</span>')+'</div></div>';
+    var open=MODES.slice(1).filter(function(m){return p.tiers[m.id]&&!isRet(p,m.id)});
+    var mm=getMe();
+    if(mm&&mm.id===p.id){
+      body+='<div class="pm-sec retire"><h3>Retire from a gamemode</h3>'+(open.length?'<div class="arow"><select id="retMode" aria-label="Gamemode">'+open.map(function(m){return '<option value="'+m.id+'">'+m.name+'</option>'}).join("")+'</select><button class="btn danger sm" id="doRet">Retire</button></div><p class="sub" style="margin:8px 0 0">Only the owner can undo a retirement.</p>':'<p class="sub" style="margin:0">'+(Object.keys(p.tiers).length?"You have retired from every gamemode you were ranked in.":"You have no tiers to retire from yet.")+'</p>')+'</div>';
+    }else if(!mm&&open.length&&!STATIC){
+      body+='<div class="pm-sec retire"><h3>Is this you?</h3><p class="sub" style="margin:0 0 10px">Sign in with your Minecraft username to retire from a gamemode.</p><button class="btn go sm" id="toSignin">Sign in or sign up</button></div>';
+    }
+  }
+  $("modal").innerHTML=top+body+'<div class="mfoot">'+(admin?'<button class="btn danger" id="delP">Remove player</button>':'')+((!admin&&getMe()&&getMe().id===p.id)?'<button class="btn" id="signOut">Sign out</button>':'')+'<button class="btn" id="closeM">Close</button></div>';
+  $("modal").dataset.p=p.id;if(!$("modal").open)$("modal").showModal();
+}
+
+/* ---------- owner actions ---------- */
+function savePlayer(p,msg){
+  return rpc("owner_set_player",{p_pw:ownerPw,p_id:p.id,p_edition:p.edition,p_region:p.region||"",p_tiers:p.tiers,p_retired:p.retired})
+    .then(function(){render(false);openPlayer(p.id);toast(msg)})
+    .catch(function(e){fail(e);return refresh(true).then(function(){openPlayer(p.id)})});
+}
+
+/* ---------- events ---------- */
+function setMode(m){
+  mode=m;renderTabs();renderView();
+  var v=$("view");v.classList.remove("swap");void v.offsetWidth;v.classList.add("swap");
+  var a=document.querySelector('#tabs [aria-selected="true"]');
+  if(a&&a.scrollIntoView)a.scrollIntoView({inline:"center",block:"nearest",behavior:"smooth"});
+  try{history.replaceState(null,"","#"+m)}catch(e){}
+}
+document.addEventListener("click",function(e){
+  var t=e.target.closest("button,label");if(!t)return;
+  var d=t.dataset||{};
+  if(d.ed){edF=d.ed;document.querySelectorAll("#edSeg button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.ed===edF)});renderView();return}
+  if(d.auth){setAuth(d.auth);return}
+  if(d.m){setMode(d.m);return}
+  if(d.edit){openPlayer(d.edit);return}
+  if(d.rm){
+    var r0=byId(d.rm);
+    if(r0)ask("Remove "+r0.name+" ("+r0.edition+") from the list?","Remove",function(){
+      rpc("owner_delete_player",{p_pw:ownerPw,p_id:r0.id}).then(function(){return refresh(true)}).then(function(){toast("Player removed")}).catch(fail)});
+    return}
+  if(d.p!==undefined&&(t.classList.contains("row")||t.classList.contains("pl"))){openPlayer(d.p);return}
+  switch(t.id){
+    case"retry":refresh(true);break;
+    case"userBtn":var um=getMe();if(um)openPlayer(um.id);else openAuth("in");break;
+    case"toSignin":$("modal").close();openAuth("in");break;
+    case"signOut":setMe(null);$("modal").close();toast("Signed out");break;
+    case"authCancel":$("authDlg").close();break;
+    case"authOk":submitAuth();break;
+    case"resetPw":var rpw=byId($("modal").dataset.p);
+      if(rpw)ask("Reset "+rpw.name+"'s password? They will need to sign up again.","Reset",function(){
+        rpc("owner_reset_account",{p_pw:ownerPw,p_id:rpw.id}).then(function(){if(meId===rpw.id)setMe(null);return refresh(true)}).then(function(){openPlayer(rpw.id);toast("Password reset")}).catch(fail)});break;
+    case"doRet":var rq=byId($("modal").dataset.p),rm=$("retMode").value,m2=getMe();
+      if(!m2||m2.id!==rq.id){toast("Sign in as this player first");break}
+      ask("Retire "+rq.name+" from "+modeName(rm)+"? Only the owner can undo this.","Retire",function(){
+        rpc("player_retire",{p_id:rq.id,p_password:mePw,p_mode:rm}).then(function(){return refresh(true)}).then(function(){openPlayer(rq.id);toast("Retired from "+modeName(rm))}).catch(fail)});
+      break;
+    case"rmAll":ask("Remove ALL "+db.players.length+" players? This cannot be undone.","Remove all",function(){
+      rpc("owner_delete_all",{p_pw:ownerPw}).then(function(){return refresh(true)}).then(function(){toast("All players removed")}).catch(fail)});break;
+    case"closeM":$("modal").close();break;
+    case"delP":var dp=byId($("modal").dataset.p);
+      if(dp)ask("Remove "+dp.name+" from the list?","Remove",function(){
+        rpc("owner_delete_player",{p_pw:ownerPw,p_id:dp.id}).then(function(){$("modal").close();return refresh(true)}).then(function(){toast("Player removed")}).catch(fail)});break;
+    case"addP":var n=$("newName").value.trim();
+      if(!NAME_RE.test(n)){toast("Use 1-16 letters, numbers or underscores");break}
+      rpc("owner_add_player",{p_pw:ownerPw,p_name:n,p_edition:$("newEd").value,p_region:$("newReg").value}).then(function(r){return refresh(true).then(function(){openPlayer(r.id)})}).catch(fail);break;
+    case"saveT":rpc("owner_set_titles",{p_pw:ownerPw,p_title:$("tt").value||"Doom Tierlist",p_sub:$("ts").value}).then(function(){return refresh(true)}).then(function(){toast("Titles saved")}).catch(fail);break;
+    case"exp":var out={title:db.title,sub:db.sub,players:db.players.map(function(p){return {name:p.name,edition:p.edition,region:p.region,tiers:p.tiers,retired:p.retired}})};
+      var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(out,null,2)],{type:"application/json"}));a.download="tierlist-backup.json";a.click();break;
+    case"pub":
+      var pd={title:db.title,sub:db.sub,updated:new Date().toISOString(),players:db.players.map(function(p){return {id:p.id,name:p.name,edition:p.edition,region:p.region||"",tiers:p.tiers,retired:p.retired,has_account:false}})};
+      var js=JSON.stringify(pd).replace(/</g,"\\u003c");
+      var page=SRC.replace("var PUBLISHED"+"=null;",function(){return "var PUBLISHED="+js+";"});
+      page=page.replace(/<title>[\s\S]*?<\/title>/,function(){return "<title>"+esc(db.title)+"</title>"});
+      var pa=document.createElement("a");pa.href=URL.createObjectURL(new Blob([page],{type:"text/html"}));pa.download="index.html";pa.click();
+      toast("Downloaded index.html. Upload it to your website host.");break;
+    case"chPw":openLogin("set");break;
+  }
+});
+document.addEventListener("change",function(e){
+  var s=e.target,d=s.dataset||{},p;
+  if(d.edSet){p=byId($("modal").dataset.p);p.edition=s.value;savePlayer(p,"Edition saved");return}
+  if(d.regSet){p=byId($("modal").dataset.p);p.region=s.value;savePlayer(p,"Region saved");return}
+  if(d.set){p=byId($("modal").dataset.p);
+    if(s.value)p.tiers[d.set]=s.value;else{delete p.tiers[d.set];delete p.retired[d.set]}
+    savePlayer(p,"Tier saved");return}
+  if(d.ret){p=byId($("modal").dataset.p);
+    if(s.checked)p.retired[d.ret]=true;else delete p.retired[d.ret];
+    savePlayer(p,s.checked?"Marked as retired":"Retirement undone");return}
+  if(s.id==="imp"&&s.files[0]){
+    var r=new FileReader();r.onload=function(){
+      var j;try{j=JSON.parse(r.result);if(!Array.isArray(j.players))throw 0}catch(x){toast("That file is not a valid backup");return}
+      ask("Replace the whole list with this backup ("+j.players.length+" players)? Player accounts will be cleared.","Replace",function(){
+        rpc("owner_replace_all",{p_pw:ownerPw,p_players:j.players}).then(function(){return refresh(true)}).then(function(){toast("Backup imported")}).catch(fail)})};
+    r.readAsText(s.files[0]);s.value="";
+  }
+});
+$("search").addEventListener("input",function(e){query=e.target.value;renderView()});
+$("modal").addEventListener("click",function(e){if(e.target===$("modal"))$("modal").close()});
+
+/* on-page confirm (browser pop-ups can be blocked) */
+var _cb=null;
+function ask(msg,okText,cb){$("cfMsg").textContent=msg;$("cfOk").textContent=okText||"Confirm";_cb=cb;$("cfDlg").showModal()}
+$("cfOk").addEventListener("click",function(){var f=_cb;_cb=null;$("cfDlg").close();if(f)f()});
+$("cfCancel").addEventListener("click",function(){_cb=null;$("cfDlg").close()});
+
+/* player sign in / sign up */
+function findCandidates(n){n=n.toLowerCase();return db.players.filter(function(p){return p.name.toLowerCase()===n})}
+function authErr(m){var el=$("authMsg");el.textContent=m;el.className="sub autherr"}
+function setAuth(m){
+  authMode=m;
+  document.querySelectorAll("#authDlg [data-auth]").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.auth===m)});
+  $("auPw2").style.display=m==="up"?"block":"none";
+  $("authOk").textContent=m==="up"?"Create account":"Sign in";
+  var el=$("authMsg");el.className="sub";
+  el.textContent=m==="up"?"Use the Minecraft username the owner added to the tier list. Pick a password.":"Enter your Minecraft username and password.";
+}
+function updateAuthEd(){var c=findCandidates($("auName").value.trim());$("auEd").style.display=c.length>1?"block":"none"}
+function openAuth(m){
+  $("auName").value="";$("auPw").value="";$("auPw2").value="";$("auEd").style.display="none";
+  setAuth(m);$("authDlg").showModal();$("auName").focus();
+}
+function submitAuth(){
+  var name=$("auName").value.trim(),pw=$("auPw").value;
+  if(!name){authErr("Enter your Minecraft username.");return}
+  var c=findCandidates(name);
+  if(!c.length){authErr("That username is not on the tier list yet. Ask the owner to add you first.");return}
+  var p=c.length>1?c.filter(function(x){return x.edition===$("auEd").value})[0]:c[0];
+  if(!p){authErr("Pick Java or Cracked.");return}
+  var job;
+  if(authMode==="up"){
+    if(p.has_account){authErr("This player already has an account. Sign in instead.");return}
+    if(pw.length<4){authErr("Use a password with at least 4 characters.");return}
+    if(pw!==$("auPw2").value){authErr("The two passwords do not match.");return}
+    job=rpc("player_signup",{p_id:p.id,p_password:pw});
+  }else job=rpc("player_signin",{p_id:p.id,p_password:pw});
+  $("authOk").disabled=true;
+  job.then(function(){
+    $("authDlg").close();setMe(p,pw);
+    toast(authMode==="up"?"Account created. Welcome, "+p.name:"Signed in as "+p.name);
+    return refresh(true).then(function(){openPlayer(p.id)});
+  }).catch(function(e){authErr(e.message)}).then(function(){$("authOk").disabled=false});
+}
+$("auName").addEventListener("input",updateAuthEd);
+["auName","auPw","auPw2"].forEach(function(id){$(id).addEventListener("keydown",function(e){if(e.key==="Enter")submitAuth()})});
+
+/* owner login */
+var loginMode="login";
+function openLogin(m){
+  loginMode=m==="set"?"set":"login";
+  $("pw").value="";$("pw2").value="";
+  $("pw2").style.display=loginMode==="set"?"block":"none";
+  $("loginTitle").textContent=loginMode==="set"?"Change owner password":"Owner login";
+  $("loginMsg").textContent=loginMode==="set"?"Pick a new password with at least 6 characters.":(REMOTE?"Enter your owner password to edit tiers.":"Demo mode: the owner password is demo.");
+  $("loginOk").textContent=loginMode==="set"?"Save password":"Log in";
+  $("loginDlg").showModal();$("pw").focus();
+}
+$("adminBtn").addEventListener("click",function(){if(admin){admin=false;ownerPw=null;render();toast("Logged out");return}openLogin()});
+$("loginCancel").addEventListener("click",function(){$("loginDlg").close()});
+$("loginOk").addEventListener("click",function(){
+  var v=$("pw").value;
+  if(loginMode==="set"){
+    if(v.length<6){toast("Use at least 6 characters");return}
+    if(v!==$("pw2").value){toast("Passwords do not match");return}
+    rpc("owner_change_password",{p_pw:ownerPw,p_new:v}).then(function(){ownerPw=v;$("loginDlg").close();toast("Password changed")}).catch(fail);
+  }else{
+    rpc("owner_login",{p_pw:v}).then(function(){ownerPw=v;admin=true;$("loginDlg").close();render();toast("Owner mode on")}).catch(function(e){toast(/owner password/i.test(e.message)?"Wrong password":e.message)});
+  }
+});
+$("pw").addEventListener("keydown",function(e){if(e.key==="Enter")$("loginOk").click()});
+$("pw2").addEventListener("keydown",function(e){if(e.key==="Enter")$("loginOk").click()});
+
+/* start */
+(function(){var h=(location.hash||"").slice(1);if(MODES.some(function(m){return m.id===h}))mode=h})();
+try{var sv=JSON.parse(sessionStorage.getItem(ME_KEY)||"null");if(sv){meId=sv.id;mePw=sv.pw}}catch(e){}
+if(STATIC){$("adminBtn").style.display="none";$("userBtn").style.display="none"}
+renderLegend();renderBanner();render();refresh(true);
+</script>
+</body>
+</html>
